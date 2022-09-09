@@ -1,9 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class House extends Model ();
-
-House.init(
+Post.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -15,7 +13,18 @@ House.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-      street: {
+      address_1: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      address_2: {
+        type: DataTypes.STRING,
+      },
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      state: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -26,7 +35,7 @@ House.init(
             len: [5]
         }
       },
-      user_id: {
+      created_by_user_id: {
         type: DataTypes.INTEGER,
         references: {
           model: 'user',
@@ -43,4 +52,3 @@ House.init(
   );
   
   module.exports = House
-
