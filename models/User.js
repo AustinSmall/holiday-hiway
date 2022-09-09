@@ -38,10 +38,6 @@ User.init(
 				len: [4],
 			},
 		},
-		has_house: {
-			type: DataTypes.BOOLEAN,
-			allowNull: true
-		},
 	},
 	{
 		hooks: {
@@ -59,7 +55,6 @@ User.init(
 				return updatedUserData;
 			},
 		},
-
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
