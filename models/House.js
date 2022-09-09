@@ -54,4 +54,3 @@ House.init(
   );
   
   module.exports = House;
-
