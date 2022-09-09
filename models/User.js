@@ -38,6 +38,10 @@ User.init(
 				len: [4],
 			},
 		},
+		has_house: {
+			type: DataTypes.BOOLEAN,
+			allowNull: true
+		},
 	},
 	{
 		hooks: {
