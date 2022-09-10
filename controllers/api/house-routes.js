@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { House } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // localhost:3000/api/housers
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
     try {
         const houseData = await House.create(req.body);
 
@@ -33,7 +34,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
 	House.destroy({
 		where: {
 			id: req.params.id,
