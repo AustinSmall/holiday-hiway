@@ -117,7 +117,8 @@ body{
     .snowflake:nth-of-type(11){
         left:65%;
         -webkit-animation-delay:4s,2.5s;
-        animation-delay:4s,2.5s}
+        animation-delay:4s,2.5s
+      }
 /* snowflake animation ends*/
 
 header h1 {
@@ -260,7 +261,7 @@ header {
       transform: rotateY(-360deg);
     }
   }
-  
 
-
-  
+  footer{
+    color: #fff;
+  }
