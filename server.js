@@ -5,13 +5,10 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const auth = ("./utils/auth");
-const hbs = exphbs.create({ auth });
-
 
 const sess = {
 	secret: "Ultimate secret",
-	cooke: {},
+	cookie: {},
 	resave: false,
 	saveUninitialized: true,
 	store: new SequelizeStore({
@@ -19,17 +16,16 @@ const sess = {
 	}),
 };
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, "public")));
+
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
-app.use(session(sess));
+
 // turn on routes
 app.use(routes);
 
