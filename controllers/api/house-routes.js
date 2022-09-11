@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { House } = require("../../models");
 const withAuth = require('../../utils/auth');
 
-// localhost:3000/api/housers
+// localhost:3000/api/houses
 router.post("/", withAuth, async (req, res) => {
     try {
         const houseData = await House.create(req.body);
