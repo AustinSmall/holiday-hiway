@@ -182,13 +182,22 @@ body {
 	font-size: 20px;
 	flex: auto;
 	padding: 5px;
-	margin-top: 20px;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .tag h2 {
 	font-size: 14px;
 	flex: auto;
 	margin-top: 20px;
+}
+
+.login-card {
+	color: #fff;
+}
+
+main {
+	margin-top: 5rem;
 }
 
 /*carousel design and animation begin*/
