@@ -29,9 +29,10 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, ".public/uploads/");
+		cb(null, "./public/images");
 	},
 	filename: function (req, file, cb) {
+		console.log(file);
 		cb(null, Date.now() + file.originalname);
 	},
 });
@@ -64,13 +65,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
-//image endpoint
-app.post("/uploadForm", upload.single(), async (req, res, next) => {
-	if (req.file) {
-		const pathName = req.file.path;
-		res.send(req.file.pathName);
-	}
-});
+
 
 // turn on routes
 app.use(routes);
