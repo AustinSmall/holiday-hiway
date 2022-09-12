@@ -24,6 +24,7 @@ const sess = {
 	}),
 };
 // picture upload multer app
+//Run the command npm install express multer — save
 const multer = require("multer");
 
 const storage = multer.diskStorage({
