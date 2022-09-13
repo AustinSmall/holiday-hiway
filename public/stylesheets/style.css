@@ -204,6 +204,37 @@ body {
 	color: #fff;
 }
 
+.dashboard {
+	font-size: 20px;
+	color: #fff;
+	width: 300%;
+	margin: 20px 75px 20px -275px;
+	text-align: center;
+}
+
+.dash-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.btn {
+	margin: 25px;
+}
+
+.btn:hover {
+	background-color: green;
+}
+
+.opt-in {
+	color: #dc3545;
+}
+
+.opt-in:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
 main {
 	margin-top: -15px;
 }
