@@ -5,6 +5,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
+  console.log(req.session);
+  if(req.session.isLoggedIn) {
+    console.log("The user is logged in");
+    res.redirect("/");
+    return;
+  }
   res.render("login")
 });
 
