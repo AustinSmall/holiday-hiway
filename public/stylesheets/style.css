@@ -160,7 +160,7 @@ body {
 .title {
 	left: 50%;
 	position: absolute;
-	top: 20%;
+	top: 15%;
 	transform: translate(-50%, -55%);
 	text-align: center;
 	color: #fff;
@@ -170,7 +170,7 @@ body {
 .tag {
 	left: 50%;
 	position: absolute;
-	top: 28%;
+	top: 20%;
 	transform: translate(-50%, -55%);
 	font-family: cursive;
 	text-align: center;
@@ -195,24 +195,25 @@ body {
 .home-para {
 	font-size: 14px;
 	color: #fff;
+	width: 300%;
+	margin: 0 75px 0 -275px;
+	text-align: center;
 }
 
 .login-card {
 	color: #fff;
-  padding
 }
 
 main {
-	margin-top: 5rem;
+	margin-top: -15px;
 }
 
 /*carousel design and animation begin*/
 .container {
 	position: relative;
 	width: 320px;
-	margin: 100px auto 0 auto;
+	margin: 150px auto 0 auto;
 	perspective: 1000px;
-	margin-top: 200px;
 }
 
 .carousel {
