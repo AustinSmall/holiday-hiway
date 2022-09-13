@@ -510,3 +510,7 @@ footer {
 		transform: rotateY(320deg) translateZ(430px);
 	}
 }
+
+input {
+  float: right;
+}
