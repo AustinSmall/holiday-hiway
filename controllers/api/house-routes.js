@@ -5,7 +5,11 @@ const withAuth = require('../../utils/auth');
 // localhost:3000/api/housers
 router.post("/", withAuth, async (req, res) => {
     try {
-        const houseData = await House.create(req.body);
+        console.log('--------------hit----------')
+        const houseData = await House.create({
+            ...req.body,
+            created_by_user_id: req.session.user_id
+        });
 
         return res.json(houseData);
 
@@ -17,6 +21,8 @@ router.post("/", withAuth, async (req, res) => {
 
 router.get("/", async (req, res) => {
     try {
+
+        console.log('get route here ------')
 
         const { user_id } = req.query;
 
