@@ -29,7 +29,7 @@ router.get("/", withAuth, (req, res) => {
 		.then((housePostData) => {
 			// serialize data before passing to template
 			const houses = housePostData.map((house) => house.get({ plain: true }));
-			res.render("view-homes", { houses, loggedIn: true });
+			res.render("view-houses", { houses, loggedIn: true });
 		})
 		.catch((err) => {
 			console.log(err);

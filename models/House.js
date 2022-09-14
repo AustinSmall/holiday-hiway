@@ -44,6 +44,9 @@ House.init(
 				key: "id",
 			},
 		},
+		photo: {
+			type: DataTypes.BLOB('long')
+		}
 	},
 	{
 		sequelize,
