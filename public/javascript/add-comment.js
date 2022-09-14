@@ -1,7 +1,7 @@
 async function addComment(event) {
     event.preventDefault();
 //MAKE SURE THIS IS THE RIGHT HTML 
-    const comment_text = document.querySelector('textare[name= "comment-body"]').value.trim();
+    const comment_text = document.querySelector('textarea[name= "comment-body"]').value.trim();
 
     const house_id = window.location.toString().split('/')[window.location.toString().split('/').length -1];
 

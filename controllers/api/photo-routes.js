@@ -1,13 +1,34 @@
-const router = require("express").Router();
-const multer  = require('multer');
-const upload = multer({ dest: './public/data/uploads/' });
+const fs = require("fs");
 
+const db = require("../models");
+const Image = db.images;
 
-router.post('/upload', upload.single('image'), function (req, res) {
-   // req.file is the name of your file in the form above, here 'uploaded_file'
-   // req.body will hold the text fields, if there were any 
-   console.log(req.file, req.body)
-});
+const uploadFiles = async (req, res) => {
+  try {
+    console.log(req.file);
 
+    if (req.file == undefined) {
+      return res.send(`You must select a file.`);
+    }
 
-module.exports = router;
+    Image.create({
+      data: fs.readFileSync(
+        __basedir + "/public/uploads/" + req.file.filename
+      ),
+    }).then((image) => {
+      fs.writeFileSync(
+        __basedir + "/public/uploads/" + image.name,
+        image.data
+      );
+
+      return res.send(`File has been uploaded.`);
+    });
+  } catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload images: ${error}`);
+  }
+};
+//NEED TO SOMEHOW ADD THIS TO HOUSE MODEL
+module.exports = {
+  uploadFiles,
+};
