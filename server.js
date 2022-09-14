@@ -2,7 +2,7 @@ const express = require("express");
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const auth = require("./utils/auth");
-
+const router = require("express").Router();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -26,33 +26,26 @@ const sess = {
 // picture upload multer app
 //Run the command npm install express multer — save
 const multer = require("multer");
-
-const storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, "./public/images");
-	},
-	filename: function (req, file, cb) {
-		console.log(file);
-		cb(null, Date.now() + file.originalname);
-	},
-});
-
-const fileFilter = (req, file, cb) => {
-	if (
-		file.mimetype === "image/jpeg" ||
-		file.mimetype === "image/jpg" ||
-		file.mimetype === "image/png"
-	) {
-		cb(null, true);
+const imageFilter = (req, file, cb) => {
+	if (file.mimetype.startsWith("image")) {
+	  cb(null, true);
 	} else {
-		cb(null, false);
+	  cb("Please upload only images.", false);
 	}
-};
+  };
+  
+  var storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+	  cb(null, __basedir + "/public/uploads/");
+	},
+	filename: (req, file, cb) => {
+	  cb(null, `${Date.now()}-bezkoder-${file.originalname}`);
+	},
+  });
+  
+  var uploadFile = multer({ storage: storage, fileFilter: imageFilter });
+  module.exports = uploadFile;
 
-const upload = multer({
-	storage: storage,
-	fileFilter: fileFilter,
-});
 // end of picture code
 
 app.use(session(sess));

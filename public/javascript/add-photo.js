@@ -1,7 +1,7 @@
 async function addPhoto(event) {
     event.preventDefault();
 //MAKE SURE THIS IS THE RIGHT HTML 
-    const image = document.querySelector('textare[name= "comment-body"]').value.trim();
+    const image = document.querySelector('textarea[name= "comment-body"]').value.trim();
 
     // const user_id =  // HOW TO FIND USER ID??
 
