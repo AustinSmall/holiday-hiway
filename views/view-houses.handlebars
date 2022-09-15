@@ -7,7 +7,7 @@
             {{#each houses as |house|}}
                 <article>
                     <div>
-                        <h3>{{house.address_1}}</h3>
+                        <h3>{{house.address_1}}, {{house.city}}, {{house.state}}, {{house.zipcode}}</h3>
 
                     </div>
                     <div class="meta">
@@ -16,7 +16,7 @@
 
                     </div>
                     <div>
-                        <p>{{house.image}}</p>
+                        <p>{{house.photo}}</p>
                     </div>
                 </article>
             {{/each}}
