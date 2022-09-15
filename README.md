@@ -1,4 +1,4 @@
-# Holiday-Hiway
+# holiday-hiway
 
 ## Description
 

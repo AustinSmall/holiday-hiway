@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // GET /api/users
 router.get("/", (req, res) => {
@@ -37,13 +38,23 @@ router.get("/:id", (req, res) => {
 
 // POST /api/users
 router.post("/", (req, res) => {
-	// expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+	console.log(req.body);
 	User.create({
 		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password,
 	})
-		.then((dbUserData) => res.json(dbUserData))
+		.then((dbUserData) => {
+			req.session.save(() => {
+				// declare session variables
+				req.session.user_id = dbUserData.dataValues.id;
+				req.session.username = dbUserData.dataValues.username;
+				req.session.loggedIn = true;
+
+				res.json({ user: dbUserData, message: "You are now logged in!" });
+			});
+		})
+
 		.catch((err) => {
 			console.log(err);
 			res.status(500).json(err);
@@ -51,7 +62,7 @@ router.post("/", (req, res) => {
 });
 
 // PUT /api/users/1
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
 	User.update(req.body, {
 		individualHooks: true,
 		where: {
@@ -72,7 +83,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE /api/users/1
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
 	User.destroy({
 		where: {
 			id: req.params.id,
@@ -92,7 +103,6 @@ router.delete("/:id", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-	// expects {email: 'lernantino@gmail.com', password: 'password1234'}
 	User.findOne({
 		where: {
 			email: req.body.email,
@@ -110,7 +120,14 @@ router.post("/login", (req, res) => {
 			return;
 		}
 
-		res.json({ user: dbUserData, message: "You are now logged in!" });
+		req.session.save(() => {
+			// declare session variables
+			req.session.user_id = dbUserData.id;
+			req.session.username = dbUserData.username;
+			req.session.loggedIn = true;
+
+			res.json({ user: dbUserData, message: "You are now logged in!" });
+		});
 	});
 });
 

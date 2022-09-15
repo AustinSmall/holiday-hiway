@@ -1,10 +1,15 @@
 const router = require("express").Router();
 const { House } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // localhost:3000/api/housers
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
     try {
-        const houseData = await House.create(req.body);
+        console.log('--------------hit----------')
+        const houseData = await House.create({
+            ...req.body,
+            created_by_user_id: req.session.user_id
+        });
 
         return res.json(houseData);
 
@@ -16,6 +21,8 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
     try {
+
+        console.log('get route here ------')
 
         const { user_id } = req.query;
 
@@ -33,7 +40,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
 	House.destroy({
 		where: {
 			id: req.params.id,
