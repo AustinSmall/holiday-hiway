@@ -54,6 +54,7 @@ House.init(
 		freezeTableName: true,
 		underscored: true,
 		modelName: "house",
+		timestamps: false
 	}
 );
 
