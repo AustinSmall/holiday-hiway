@@ -2,28 +2,24 @@
 
 ## Description
 
-This is an MVC application/dashboard where users can add their Christmas-decorated home to a database to be offered for others to include in a mapped out route for a festive evening outing. A user can login to navigate between:
+This is an MVC application/dashboard where users can add their Christmas-decorated home to a database to be offered for others to pull up and go see for a fun family outing.
+The initial application allows users to signup/login in order to upload a house to be viewed and pull up a list of all homes to view in order to plan a festive evening outing of holiday decorations.
 
-- listing their home to showcase,
-- planning a route to view decorated homes by zip code,
-- view existing posted homes by zip code,
-- comment on homes
+The app utilizes the bcrypt package to protect against unauthorized use. In addition, the app utilizes the MySQL2, Sequalize, express-handlebars, dotenv, express-session and connect-session-sequelize packages to carry out functionality. Mockplus.com was also employed for UI quality enhancements. The https://anvil.works/advent/days-until-christmas-api was used for the awesome Christmas countdown on the home page.
 
-There are options to create, read, update, comment on, and delete submissions depending on authorization level. The app also utilizes the bcrypt package to protect against unauthorized use. In addition, the app utilizes the MySQL2, Sequalize, express-handlebars, dotenv, express-session and connect-session-sequelize packages and the Mapbox API to carry out functionality. mockplus.com was also employed for UI quality enhancements.
-
-View live demo here ...
-
-Go to deployed app here ...
+Due to development [Issues](#issues) more work is needed to implement all desired features.
 
 ### Future expansion thoughts:
 
-**1) User personalization**
+- Implementing Cloudinary/Multer to allow uploading a picture to each showcase home,
+- Adding updating and deleting buttons to posted houses,
+- Ability to view existing posted homes by zip code on the viewing homes page,
+- Include feature to comment and update comments on homes
+- User ability to plan a route using Mapbox API, https://www.mapbox.com/, to view decorated homes,
+- Possible ability for user to select specific houses to go see and then create a map with only those self selected homes
+- App could be upgraded to include more holiday options (eg. Fireworks displays, Easter Egg hunts, Halloween decorations, Trick or Treating allergy guide)
 
-Have user be able to select specific houses to go see and then create a map with only those self selected homes
-
-**2) Other Holidays**
-
-App could be upgraded to include more holiday options (eg. Fireworks displays, Easter Egg hunts, Halloween decorations, Trick or Treating allergy guide)
+Go to deployed app here: https://holiday-hiway.herokuapp.com/
 
 ## Table of Contents
 
@@ -57,7 +53,8 @@ SO THAT I can plan a fun family night to see everyone else’s holiday efforts
 
 ## Issues
 
-N/A
+- Could not get Cloudinary and Multer to work for user photo upload
+- Did not have time to get all features activated due to time constraints and team communication limits
 
 ## License
 
@@ -80,4 +77,4 @@ GitHub Repository: https://github.com/cduwors/holiday-hiway
 
 Input Sample
 
-<img src= "./img/employee-tracker.png"/>
+<img src= "./public/images/holiday-hiway.png"/>
