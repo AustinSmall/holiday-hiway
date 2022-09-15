@@ -45,8 +45,9 @@ House.init(
 			},
 		},
 		photo: {
-			type: DataTypes.BLOB('long')
-		}
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 	},
 	{
 		sequelize,

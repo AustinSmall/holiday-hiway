@@ -1,12 +1,10 @@
 async function addPhoto(event) {
     event.preventDefault();
 //MAKE SURE THIS IS THE RIGHT HTML 
-    const image = document.querySelector('textarea[name= "comment-body"]').value.trim();
+    const image = document.querySelector('textarea[name= "photo"]').value.trim();
 
-    // const user_id =  // HOW TO FIND USER ID??
-
-    if(comment_text) {
-        const response = await fetch('/api/photos', {
+    if(image) {
+        const response = await fetch('/api/houses', {
             method: 'Post',
             body: JSON.stringify({image}),
             headers: {'Content-Type': 'application/json'},
@@ -19,4 +17,4 @@ async function addPhoto(event) {
     }
 }
 // MAKE SURE THIS IS THE RIGHT HTML
-document.querySelector('.comment-form').addEventListener('submit', addPhoto);
+document.querySelector('#new-house').addEventListener('submit', addPhoto);
